@@ -12,5 +12,19 @@ module.exports = {
       payload: item,
       type: "item:delete"
     })
+  },
+  unbuy: function(item) {
+    console.log('action de descomprar');
+    dispatcher.dispatch({
+      payload: item,
+      type: "item:unbuy"
+    })
+  },
+  buy: function(item) {
+    console.log('action de comprar');
+    dispatcher.dispatch({
+      payload: item,
+      type: "item:buy"
+    })
   }
 }

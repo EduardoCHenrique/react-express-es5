@@ -43,6 +43,13 @@ function ItemStore() {
     triggerListeners();
   }
 
+  function setItemBought(item, isBought) {
+    var _item = items.filter(function(a) { return a.name == item.name})[0];
+    console.log('_item', _item, isBought);
+    _item.purchased = isBought;
+    triggerListeners();
+  }
+
   dispatcher.register(function(event) {
     var split = event.type.split(':');
     if (split[0]==='item') {
@@ -52,6 +59,12 @@ function ItemStore() {
           break;
         case "delete":
           deleteItem(event.payload)
+          break;
+        case "unbuy":
+          setItemBought(event.payload, false)
+          break;
+        case "buy":
+          setItemBought(event.payload, true)
           break;
       }
     }
