@@ -7,7 +7,7 @@ var itemStore = require('./stores/ItemStore.jsx');
 var initial = itemStore.getItems();
 
 function render() {
-  ReactDOM.render(<ItemList items={initial}/>, app);
+  ReactDOM.render(<ItemList items={initial} />, app);
 }
 
 itemStore.onChange(function(items) {

@@ -32,12 +32,26 @@ function ItemStore() {
     });
   }
 
+  function deleteItem(item) {
+    var index;
+    items.filter(function(_item, _index) {
+      if (_item.name == item.name) {
+        index = _index;
+      }
+    })
+    items.splice(index, 1);
+    triggerListeners();
+  }
+
   dispatcher.register(function(event) {
     var split = event.type.split(':');
     if (split[0]==='item') {
       switch(split[1]) {
         case "add":
           addItem(event.payload)
+          break;
+        case "delete":
+          deleteItem(event.payload)
           break;
       }
     }
